@@ -1,0 +1,77 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: #a2c7bb;
+}
+
+#Tabla {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  text-align: left;
+  width: 100%;
+}
+
+#Tabla td,
+#Tabla th {
+  border: 2px solid #000000;
+  padding: 8px;
+}
+
+#Tabla tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#Tabla tr:hover {
+  background-color: #ddd;
+}
+
+#Tabla th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #dde29f;
+  color: #000000;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 40px;
+  border-radius: 12px;
+  padding-top: 30px;
+  background-color: #24434b;
+  width: 25%;
+  box-shadow: 10px 10px 30px #00000070;
+}
+
+.input {
+  width: 70%;
+  padding: 15px;
+  margin: 9px auto;
+  background-color: #d6d6d6;
+  color: black;
+  border: none;
+  border-radius: 10px;
+}
+
+.boton {
+  margin: auto;
+  padding: 10px;
+  color: #f3f3f3;
+  background: #c50e33;
+  border: none;
+  border-radius: 7px;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.boton:hover {
+  background: #ff2551;
+  transition: 0.75s;
+  box-shadow: 10px 10px 30px #00000070;
+}

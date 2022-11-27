@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabla | Matea</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <table id="Tabla">
+        <tr>
+            <th>NOMBRES</th>
+            <th>EDADES</th>
+            <th>TIPOS</th>
+            <th>CARACTERISITCAS</th>
+        </tr>
+    </table>
+
+    <div class="formulario">
+        <input type="text" class="input" id="inputName" placeholder="Nombre" />
+
+        <input type="number" class="input" id="inputAge" placeholder="Edad" />
+
+        <input type="text" class="input" id="inputTipo" placeholder="Tipo" />
+
+        <input type="text" class="input" id="inputCarac" placeholder="Caracterisitca" />
+
+        <button type="submit" class="boton">Enviar</button>
+    </div>
+</body>
+
+<script>
+    const server = "/buscar";
+    const table = document.getElementById("customers");
+
+    async function tabla() {
+        const response = await fetch(server);
+        const datos = await response.json();
+        console.log(datos);
+
+        datos.forEach((data) => {
+            let trTabla = document.createElement("tr");
+            let tdname = document.createElement("td");
+            let tdedad = document.createElement("td");
+            let tdtipo = document.createElement("td");
+            let tdCarac = document.createElement("td");
+            tdname.innerHTML = data.nombre;
+            tdedad.innerHTML = data.edad;
+            tdtipo.innerHTML = data.tipo;
+            tdCarac.innerHTML = data.Caracteristicas;
+            table.appendChild(trTabla);
+            trTabla.appendChild(tdname);
+            trTabla.appendChild(tdedad);
+            trTabla.appendChild(tdtipo);
+            trTabla.appendChild(tdCarac);
+        });
+    }
+    tabla();
+
+    const inputName = document.querySelector("#inputName");
+    const inputAge = document.querySelector("#inputAge");
+    const inputTipo = document.querySelector("#inputTipo");
+    const inputCarac = document.querySelector("#inputCarac");
+    const button = document.querySelector("button");
+
+    button.addEventListener("click", (e) => {
+        const nombre = inputName.value;
+        const edad = inputAge.value;
+        const tipo = inputTipo.value;
+        const Caracteristicas = inputCarac.value;
+
+        fetch("/crear", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nombre,
+                edad,
+                tipo,
+                Caracteristicas,
+            }),
+        });
+    });
+</script>
+
+</html>
